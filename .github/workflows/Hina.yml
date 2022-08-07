@@ -1,4 +1,4 @@
-name: HinaRobot Wf 
+name: HinaRobot2 Wf 
 
 on:
     push:
@@ -29,13 +29,16 @@ jobs:
        - name: cloning repo
          continue-on-error: true
          run: |
-           git clone -b orig https://4LINUXUSER4:${{ secrets.GH_TOKEN }}@github.com/4LINUXUSER4/AE_ENCODER.git 
-       - name: Running SmartEncoder Bot
+           git clone -b Heroku https://4LINUXUSER4:${{ secrets.GH_TOKEN }}@github.com/4LINUXUSER4/Auge.git 
+       - name: Running Auge Bot
          timeout-minutes: 300
          continue-on-error: true
          run: |
-           cd AE_ENCODER 
-           docker build -t compressor . && docker run compressor
+           cd Auge 
+           virtualenv -p python3 VENV
+           . ./VENV/bin/activate
+           pip install -r requirements.txt
+           python bot.py
            
        - name: Loop workflow
          continue-on-error: true
