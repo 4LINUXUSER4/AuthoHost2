@@ -34,6 +34,8 @@ jobs:
          timeout-minutes: 300
          continue-on-error: true
          run: |
+           apt-get install python3-pip -y
+           pip3 install virtualenv
            cd Auge 
            pip install -r requirements.txt
            python bot.py
